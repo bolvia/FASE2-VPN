@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2023-07-07T15:52:51Z</date>
+    <groups>
+        <group>
+            <name>Fortigate-MM</name>
+        </group>
+        <group>
+            <name>ZBX-FORTINET-TEMPLATES</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>ZBX-FORTINET-SESSION</template>
+            <name>ZBX-FORTINET-SESSION</name>
+            <groups>
+                <group>
+                    <name>Fortigate-MM</name>
+                </group>
+                <group>
+                    <name>ZBX-FORTINET-TEMPLATES</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>Session</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>Counts of accept queue full</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.6.2.6.0</snmp_oid>
+                    <key>fgSIAdvSesAcceptQFCount</key>
+                    <delay>300</delay>
+                    <history>7d</history>
+                    <status>DISABLED</status>
+                    <applications>
+                        <application>
+                            <name>Session</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Number of new sessions which have collision</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.6.2.3.0</snmp_oid>
+                    <key>fgSIAdvSesClashCount</key>
+                    <delay>300</delay>
+                    <history>7d</history>
+                    <status>DISABLED</status>
+                    <applications>
+                        <application>
+                            <name>Session</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Ephemeral sessions: current number</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.6.2.1.0</snmp_oid>
+                    <key>fgSIAdvSesEphemeralCount</key>
+                    <delay>300</delay>
+                    <history>7d</history>
+                    <applications>
+                        <application>
+                            <name>Session</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Ephemeral sessions: limit number</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.6.2.2.0</snmp_oid>
+                    <key>fgSIAdvSesEphemeralLimit</key>
+                    <delay>300</delay>
+                    <history>7d</history>
+                    <applications>
+                        <application>
+                            <name>Session</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Number of current expectation sessions</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.6.2.4.0</snmp_oid>
+                    <key>fgSIAdvSesExpCount</key>
+                    <delay>300</delay>
+                    <history>7d</history>
+                    <status>DISABLED</status>
+                    <applications>
+                        <application>
+                            <name>Session</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Counts of direct requests to FortiGate local stack</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.6.2.7.0</snmp_oid>
+                    <key>fgSIAdvSesNoListenerCount</key>
+                    <delay>300</delay>
+                    <history>7d</history>
+                    <status>DISABLED</status>
+                    <applications>
+                        <application>
+                            <name>Session</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Counts of sync queue full</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.6.2.5.0</snmp_oid>
+                    <key>fgSIAdvSesSyncQFCount</key>
+                    <delay>300</delay>
+                    <history>7d</history>
+                    <status>DISABLED</status>
+                    <applications>
+                        <application>
+                            <name>Session</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>IPv6 Active sessions</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.1.15.0</snmp_oid>
+                    <key>fgSysSes6Count</key>
+                    <delay>300</delay>
+                    <history>7d</history>
+                    <status>DISABLED</status>
+                    <applications>
+                        <application>
+                            <name>Session</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>({last(0)}-{avg(86400)})&gt;0.2 * {last(0)} and ({last(0)}-{avg(86400)})&lt;0.3 * {last(0)}</expression>
+                            <name>Foi detectado um aumento de 20% de sessões ativas de IPv6 - {HOST.HOST}</name>
+                            <status>DISABLED</status>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                        <trigger>
+                            <expression>({last(0)}-{avg(86400)})&gt;0.3 * {last(0)} and ({last(0)}-{avg(86400)})&lt;0.4 * {last(0)}</expression>
+                            <name>Foi detectado um aumento de 30% de sessões ativas de IPv6 - {HOST.HOST}</name>
+                            <status>DISABLED</status>
+                            <priority>HIGH</priority>
+                        </trigger>
+                        <trigger>
+                            <expression>({last(0)}-{avg(86400)})&gt;0.4 * {last(0)}</expression>
+                            <name>Foi detectado um aumento de 40% de sessões ativas de IPv6 - {HOST.HOST}</name>
+                            <status>DISABLED</status>
+                            <priority>DISASTER</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>IPv6 Session Setup Rate over 1 min</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.1.16.0</snmp_oid>
+                    <key>fgSysSes6Rate1</key>
+                    <delay>300</delay>
+                    <history>7d</history>
+                    <status>DISABLED</status>
+                    <units>CPS</units>
+                    <applications>
+                        <application>
+                            <name>Session</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>IPv6 Session Setup Rate over 10 mins</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.1.17.0</snmp_oid>
+                    <key>fgSysSes6Rate10</key>
+                    <delay>300</delay>
+                    <history>7d</history>
+                    <status>DISABLED</status>
+                    <units>CPS</units>
+                    <applications>
+                        <application>
+                            <name>Session</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>IPv6 Session Setup Rate over 30 mins</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.1.18.0</snmp_oid>
+                    <key>fgSysSes6Rate30</key>
+                    <delay>300</delay>
+                    <history>7d</history>
+                    <status>DISABLED</status>
+                    <units>CPS</units>
+                    <applications>
+                        <application>
+                            <name>Session</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>IPv6 Session Setup Rate over 60 mins</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.1.18.0</snmp_oid>
+                    <key>fgSysSes6Rate60</key>
+                    <delay>300</delay>
+                    <history>7d</history>
+                    <status>DISABLED</status>
+                    <units>CPS</units>
+                    <applications>
+                        <application>
+                            <name>Session</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>IPv4 Active sessions</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.1.8.0</snmp_oid>
+                    <key>fgSysSesCount</key>
+                    <delay>300</delay>
+                    <history>7d</history>
+                    <status>DISABLED</status>
+                    <applications>
+                        <application>
+                            <name>Session</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>({last(0)}-{avg(86400)})&gt;0.3 * {last(0)} and ({last(0)}-{avg(86400)})&lt;0.4 * {last(0)}</expression>
+                            <name>An increase of 30% of ipv4 active sessions was detected - {HOST.HOST}</name>
+                            <status>DISABLED</status>
+                            <priority>HIGH</priority>
+                        </trigger>
+                        <trigger>
+                            <expression>({last(0)}-{avg(86400)})&gt;0.2 * {last(0)} and ({last(0)}-{avg(86400)})&lt;0.3 * {last(0)}</expression>
+                            <name>Foi detectado um aumento de 20% de sessões ativas de IPv4 - {HOST.HOST}</name>
+                            <status>DISABLED</status>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                        <trigger>
+                            <expression>({last(0)}-{avg(86400)})&gt;0.4 * {last(0)}</expression>
+                            <name>Foi detectado um aumento de 40% de sessões ativas de IPv4 - {HOST.HOST}</name>
+                            <status>DISABLED</status>
+                            <priority>DISASTER</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>IPv4 Session Setup Rate over 1 min</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.1.11.0</snmp_oid>
+                    <key>fgSysSesRate1</key>
+                    <delay>300</delay>
+                    <history>7d</history>
+                    <status>DISABLED</status>
+                    <units>CPS</units>
+                    <applications>
+                        <application>
+                            <name>Session</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>IPv4 Session Setup Rate over 10 mins</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.1.12.0</snmp_oid>
+                    <key>fgSysSesRate10</key>
+                    <delay>300</delay>
+                    <history>7d</history>
+                    <status>DISABLED</status>
+                    <units>CPS</units>
+                    <applications>
+                        <application>
+                            <name>Session</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>IPv4 Session Setup Rate over 30 mins</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.1.13.0</snmp_oid>
+                    <key>fgSysSesRate30</key>
+                    <delay>300</delay>
+                    <history>7d</history>
+                    <status>DISABLED</status>
+                    <units>CPS</units>
+                    <applications>
+                        <application>
+                            <name>Session</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>IPv4 Session Setup Rate over 60 mins</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.12356.101.4.1.14.0</snmp_oid>
+                    <key>fgSysSesRate60</key>
+                    <delay>300</delay>
+                    <history>7d</history>
+                    <status>DISABLED</status>
+                    <units>CPS</units>
+                    <applications>
+                        <application>
+                            <name>Session</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>ICMP ping</name>
+                    <type>SIMPLE</type>
+                    <key>icmpping</key>
+                    <delay>3m</delay>
+                </item>
+            </items>
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <expression>{ZBX-FORTINET-SESSION:fgSIAdvSesEphemeralCount.last(0)}&gt;{ZBX-FORTINET-SESSION:fgSIAdvSesEphemeralLimit.last(0)}</expression>
+            <name>O número de sessões efêmeras excedeu o limite - {HOST.HOST}</name>
+            <status>DISABLED</status>
+            <priority>AVERAGE</priority>
+        </trigger>
+    </triggers>
+    <graphs>
+        <graph>
+            <name>Active Sessions</name>
+            <graph_items>
+                <graph_item>
+                    <color>C80000</color>
+                    <item>
+                        <host>ZBX-FORTINET-SESSION</host>
+                        <key>fgSysSesCount</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>00C800</color>
+                    <item>
+                        <host>ZBX-FORTINET-SESSION</host>
+                        <key>fgSysSes6Count</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+    </graphs>
+</zabbix_export>
