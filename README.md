@@ -1,5 +1,6 @@
 # FASE2-VPN
 Monitoramento VPN FASE 2 Fortigate
+
 1° Passo: Add o template anexado no projeto
 
 2° Passo: Crie um host no Zabbix com o mesma nomenclatura do Firewall Fortigate. Ex: FW-02 (Nome que está no meu FW)
